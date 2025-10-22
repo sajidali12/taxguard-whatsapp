@@ -1,0 +1,9 @@
+run = "python app_cloud_api.py"
+language = "python3"
+entrypoint = "app_cloud_api.py"
+
+[nix]
+channel = "stable-22_11"
+
+[deployment]
+run = ["sh", "-c", "python app_cloud_api.py"]
