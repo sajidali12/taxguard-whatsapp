@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: taxguard-whatsapp-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements_cloud_api.txt
+    startCommand: gunicorn app_cloud_api:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: META_ACCESS_TOKEN
+        sync: false
+      - key: META_PHONE_NUMBER_ID
+        sync: false
+      - key: META_WEBHOOK_VERIFY_TOKEN
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+    healthCheckPath: /health
